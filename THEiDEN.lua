@@ -2323,7 +2323,7 @@ if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*᥀︙هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
 os.execute('rm -rf THEiDEN.lua')
-download('https://github.com/Th3iden/THEIDEN','THEiDEN.lua')
+download('https://raw.githubusercontent.com/Th3iden/Test/main/THEiDEN.lua','THEiDEN.lua')
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*᥀︙تم تحديث السورس * ',"md",true)  
 end
 if text == '『 تعطيل الاذاعه 』' or text == 'تعطيل الاذاعه' then
@@ -9851,6 +9851,55 @@ local TestText = "  ❲ Developers Source ❳\n— — — — — — — — �
 local msg_id = msg.id/2097152/0.5 
 return https.request("https://api.telegram.org/bot"..Token..'/sendMessage?chat_id=' .. msg.chat_id .. '&text=' .. URL.escape(TestText).."&reply_to_message_id="..msg_id.."&parse_mode=markdown")
 end
+end
+if text == 'جعفر صادق' or text == 'جعفر صادق تكليف' or text == '07825879819' or text =='07801317372' or text == 'صاحب السورس' or text == 'منو مبرمج السورس' then   
+
+local UserInfo = LuaTele.getUser(Sudo_Id) 
+
+local InfoUser = LuaTele.getUserFullInfo(Sudo_Id)
+
+if InfoUser.bio then
+
+Bio = InfoUser.bio
+
+else
+
+Bio = ''
+
+end
+
+local photo = LuaTele.getUserProfilePhotos(Sudo_Id)
+
+if photo.total_count > 0 then
+
+local TestText = "  ❲ Developers Bot ❳\n— — — — — — — — —\n ᥀︙*Dev Name* :  ["..UserInfo.first_name.."](tg://user?id="..Sudo_Id..")\n᥀︙*Dev Bio* : [❲ "..Bio.." ❳]"
+
+keyboardd = {} 
+
+keyboardd.inline_keyboard = {
+
+{
+
+{text = '❲ THE•IDEN ❳', url = "https://t.me/TH3IDEN"}
+
+},
+
+}
+
+local msg_id = msg.id/2097152/0.5 
+
+return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(TestText)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
+
+else
+
+local TestText = "  ❲ Developers Source ❳\n— — — — — — — — —\n ᥀︙*Dev Name* :  ["..UserInfo.first_name.."](tg://user?id="..Sudo_Id..")\n᥀︙*Dev Bio* : [❲ "..Bio.." ❳]"
+
+local msg_id = msg.id/2097152/0.5 
+
+return https.request("https://api.telegram.org/bot"..Token..'/sendMessage?chat_id=' .. msg.chat_id .. '&text=' .. URL.escape(TestText).."&reply_to_message_id="..msg_id.."&parse_mode=markdown")
+
+end
+
 end
 if text == 'جمالي' or text == 'نسبه جمالي' then
 if not Redis:get(TheTHEiDEN.."THEiDEN:Status:gamle"..msg_chat_id) then
