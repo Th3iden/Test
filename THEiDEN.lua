@@ -2285,7 +2285,41 @@ else
 return LuaTele.sendText(msg_chat_id,msg_id,"\n᥀︙هاذا ليس معرف قناة يرجى ارسال معرف القناة الصحيح: [@"..ChannelUser..']',"md",true)  
 end
 end
+if text == 'معلومات السيرفر' or text == 'السيرفر' then 
+
+faederdx(msg.chat_id_, msg.id_, 1, io.popen([[
+
+linux_version=`lsb_release -ds`
+
+memUsedPrc=`free -m | awk 'NR==2{printf "%sMB/%sMB {%.2f%}\n", $3,$2,$3*100/$2 }'`
+
+HardDisk=`df -lh | awk '{if ($6 == "/") { print $3"/"$2" ~ {"$5"}" }}'`
+
+CPUPer=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
+
+uptime=`uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes."}'`
+
+echo '⌯︙نظام التشغيل ، \n`'"$linux_version"'`' 
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙الذاكره العشوائيه ،\n`'"$memUsedPrc"'`'
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙وحدة التخزين ،\n`'"$HardDisk"'`'
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙المعالج ،\n`'"`grep -c processor /proc/cpuinfo`""Core ~ {$CPUPer%} "'`'
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙الدخول ،\n`'`whoami`'`'
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙مدة تشغيل السيرفر ،\n`'"$uptime"'`'
+
+]]):read('*a'), 1, 'md')
+
+end end 
+
+--     By Developer Faeder     -- 
+
 end
+
+--     By Developer Faeder     -- 
 if text == 'تفعيل الاشتراك الاجباري' or text == 'تفعيل الاشتراك الاجباري ⌔' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*᥀︙هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
@@ -6376,6 +6410,41 @@ data = {
 }
 return LuaTele.sendText(msg_chat_id,msg_id,'*᥀︙ يرجاء تأكيد الأمر عزيزي*',"md",false, false, false, false, reply_markup)
 end
+ if text == 'معلومات السيرفر' or text == 'السيرفر' then 
+
+faederdx(msg.chat_id_, msg.id_, 1, io.popen([[
+
+linux_version=`lsb_release -ds`
+
+memUsedPrc=`free -m | awk 'NR==2{printf "%sMB/%sMB {%.2f%}\n", $3,$2,$3*100/$2 }'`
+
+HardDisk=`df -lh | awk '{if ($6 == "/") { print $3"/"$2" ~ {"$5"}" }}'`
+
+CPUPer=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
+
+uptime=`uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes."}'`
+
+echo '⌯︙نظام التشغيل ، \n`'"$linux_version"'`' 
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙الذاكره العشوائيه ،\n`'"$memUsedPrc"'`'
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙وحدة التخزين ،\n`'"$HardDisk"'`'
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙المعالج ،\n`'"`grep -c processor /proc/cpuinfo`""Core ~ {$CPUPer%} "'`'
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙الدخول ،\n`'`whoami`'`'
+
+echo '• ┉ • ┉ • ┉ • ┉ • ┉ •\n⌯︙مدة تشغيل السيرفر ،\n`'"$uptime"'`'
+
+]]):read('*a'), 1, 'md')
+
+end end 
+
+--     By Developer Faeder     -- 
+
+end
+
+--     By Developer Faeder     -- 
 if text == 'تاك للكل' then
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*᥀︙هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
